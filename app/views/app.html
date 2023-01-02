@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+ <html>
+	 <head>
+		 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		 <title>Agility Maps ( BETA )</title>
+		 <link rel="stylesheet" href="/static/ui/app/css/interface.css" type="text/css" media="screen" />
+		 <link rel="stylesheet" href="/static/ui/app/css/print.css" type="text/css" media="print" />
+		 <script type="text/javascript" src="/static/ui/app/src/interface.js"></script>
+		 <script type="text/javascript" src="/static/ui/app/src/init.js"></script>	
+		 <script type="text/javascript" src="/static/ui/app/src/language.js"></script>
+		 <script type="text/javascript" src="/static/ui/app/src/trajectories.js"></script>
+		 <script type="text/javascript" src="/static/ui/app/src/events.js"></script>
+		 <script type="text/javascript" src="/static/ui/app/src/functions.js"></script>
+		 <script type="text/javascript" src="/static/ui/app/src/add-obstacles.js"></script>
+		 <script type="text/javascript" src="/static/ui/app/src/over-obstacle.js"></script>
+		 <script type="text/javascript" src="/static/ui/app/src/visual.js"></script>
+		 <script type="text/javascript" src="/static/ui/app/src/color.js"></script>
+		 <script type="text/javascript" src="/static/ui/app/src/functions-obstacle.js"></script>
+  </head>
+  <body style="cursor: default;">
+   <div id="conteneurImgExport" class="imageNotExport" >
+    <input type="button" value="Fermer" onclick="fermerExport()" style="float:left;"><br/><br/>
+    <span class="txtOption"  id="txtInfoDl">Pour télécharger l'image, effectuer un clique droit sur l'image puis "Enregistrer sous"</span><br/><br/>
+   </div>  
+   <img id="canvasimg" src="" />
+   <div id="globalContent" style="display:block;">
+    <div id="fb-root"></div>
+    <script>
+     (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.0";
+      fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <div id="fb-root"></div>
+
+    <img src="static/public/title/logo150.png" id="logo" width="90px" height="90px"></img>
+    <img src="static/public/title/flag-icons/fr.png" id="medaille" width="12px" height="12px"></img>
+    <div id="titre" class="barreTitre">
+    </div>
+ 
+    <img src="static/public/title/title.png" id="titreLogo"></img>
+	   <div id="options" class="barreOptions">
+	    <div id="blocOObst" class="blocOptions" onClick="setInfoObstacles()" > 
+		    <img id="imgObs" src="images/obstacles.png" width="50px" height="35px" />
+			   <div id="contentBlocOObst">Obstacles</div>				
+	    </div>
+	    <div id="blocOParam" class="blocOptions" onClick="setInfoParam()" >	 
+		    <img id="imgParam" src="images/paramBW.png" width="45px" height="35px" />
+			   <div id="contentBlocOParam">Paramètres</div>		
+	    </div>	 
+	    <div id="blocOTrj" class="blocOptions" onClick="setInfoTrajectoires()">
+		    <img id="imgTrj" src="images/trjBW.png" width="50px" height="35px" />
+			   <div id="contentBlocOTrj">Trajectoires</div>					
+	    </div>
+	  <div id="blocOCon" class="blocOptions" onClick="setInfoConducteur()">
+		<img id="imgCon" src="images/conducteurBW.png" width="45px" height="35px" />
+			<div id="contentBlocOCon">Driver</div>					
+	  </div>
+	  <div id="blocOSav" class="blocOptions" onClick="setInfoSauvegarde()">
+		<img id="imgSav" src="images/savBW.png" width="35px" height="35px" />
+			<div id="contentBlocOSav">Téléchargement</div>				
+	  </div>
+	  <div id="blocOLangue" class="blocOptions" onClick="setInfoLangue()">
+		<img id="langueOptions" src="images/flags/fr.png"  height="35px"/>
+			<div id="contentBlocOLangue">Langue</div>				
+	  </div>
+  </div>
+  
+ 
+  <div id="barreOConduct" class="barreOutil">
+	<div class="blocOutil blocOutil1">
+		<div class="titreBloc" id="outilsConducteur">Driver</div>	
+		<input type="button" class="boutonOutil gAvant" value=" " onclick="ajouterConducteur('gL')"/>
+		<input type="button" class="boutonOutil dAvant" value=" " onclick="ajouterConducteur('dL')"/>	
+		<input type="button" class="boutonOutil gMilieu" value=" " onclick="ajouterConducteur('g')"/>	
+		<input type="button" class="boutonOutil dMilieu" value=" " onclick="ajouterConducteur('d')"/>
+		<input type="button" class="boutonOutil gLong" value=" " onclick="ajouterConducteur('gC')"/>	
+		<input type="button" class="boutonOutil dLong" value=" " onclick="ajouterConducteur('dC')"/>		
+		<input type="button" class="boutonOutil neutre" value=" " onclick="ajouterConducteur('')"/>		
+		<input type="button" class="boutonOutil chien" value=" " onclick="ajouterChien()"/>	
+		</div>
+	<div class="blocOutil">
+		<div class="titreBloc" id="outilsOutils">Outils</div>
+		<input type="button" class="boutonOutil zoomP" value=" " onclick="zoom('p')"/>
+		<input type="button" class="boutonOutil zoomM" value=" " onMouseDown="zoom('m')"/>	
+		<input type="button" class="boutonOutil poubelle" value=" " onMouseDown="supprimerObstacle()"/>		
+	</div>	
+	<div class="titreBloc" id="outilsCouleurs">Couleurs</div>	
+		<div class="colorSample" id="color-grey-con" onClick="setDriverColor(1)"></div>
+		<div class="colorSample" id="color-red-con" onClick="setDriverColor(2)"></div>
+		<div class="colorSample" id="color-blue-con" onClick="setDriverColor(3)"></div>		
+		<table class="checkboxTable">
+		<tr><td><INPUT type="checkbox" id="AfficherConducteur" name="cond" value="0" onclick="genererParcours()" checked></td><td><span class="txtOption" id="txtShowDrive">Show the driver</span></td></tr>		
+		</table>
+		 		
+	</div>
+  </div>
+    <div id="barreOLangue" class="barreOutil">
+	<div class="blocOutil blocOutil1">
+	<div class="titreBloc" id="outilsLangue">Langue</div>	
+	<FORM>
+	<div id="blocInfoLangueFr" class="blocInfo" onClick="setLangue('fr');">
+		<img src="images/fr.png" /> Fr
+	</div>
+  	<div id="blocInfoLangueEn" class="blocInfo" onClick="setLangue('gb');">
+		<img src="images/gb.png" /> En
+	</div>
+  	<div id="blocInfoLanguePt" class="blocInfo" onClick="setLangue('pt');">
+		<img src="images/pt.png" /> Pt
+	</div>
+  	<div id="blocInfoLangueEs" class="blocInfo" onClick="setLangue('es');">
+		<img src="images/es.png" /> Es
+	</div>
+  	<div id="blocInfoLangueDe" class="blocInfo" onClick="setLangue('de');">
+		 <img src="images/de.png" /> De
+	</div>
+  	<div id="blocInfoLangueIt" class="blocInfo" onClick="setLangue('it');">
+		 <img src="images/it.png" /> It
+	</div>
+  	<div id="blocInfoLanguePl" class="blocInfo" onClick="setLangue('pl');">
+		 <img src="images/pl.png" /> Pl
+	</div>
+  	<div id="blocInfoLangueJp" class="blocInfo" onClick="setLangue('jp');">
+		 <img src="images/jp.png" /> 日本語
+	</div>
+  	<div id="blocInfoLangueSe" class="blocInfo" onClick="setLangue('se');">
+		 <img src="images/se.png" /> Se
+	</div>
+  	<div id="blocInfoLangueNo" class="blocInfo" onClick="setLangue('no');">
+		 <img src="images/no.png" /> No
+	</div>
+  	<div id="blocInfoLangueFi" class="blocInfo" onClick="setLangue('fi');">
+		 <img src="images/fi.png" /> Fi
+	</div>
+  	<div id="blocInfoLangueDa" class="blocInfo" onClick="setLangue('da');">
+		 <img src="images/da.png" /> Da
+	</div>
+  	<div id="blocInfoLangueHu" class="blocInfo" onClick="setLangue('hu');">
+		 <img src="images/hu.png" /> Hu
+	</div>
+  	<div id="blocInfoLangueRu" class="blocInfo" onClick="setLangue('ru');">
+		 <img src="images/ru.png" /> Ru
+	</div>
+  	<div id="blocInfoLangueCt" class="blocInfo" onClick="setLangue('ct');">
+		 <img src="images/ct.png" /> Ca
+	</div>		
+	</FORM>
+	</div>	
+  </div>
+  <div id="barreOParam" class="barreOutil">
+	<div class="blocOutil blocOutil1">
+		<div class="titreBloc" id="outilsParam">Paramètres</div>	
+		<div><span id="txtTitre"> Titre : </span><input type="text" id="titreParcours" onKeyUp="changeInfos()"/></div>
+		<div><span id="txtAuteur"> Auteur : </span><input  type="text" id="auteurParcours" onKeyUp="changeInfos()"/></div>
+		<div class="titreBloc" id="outilsDimension">Dimensions</div>	
+		<div><span class="txtOption" id="txtLongueur"> Longueur : </span><input type="text" id="largeurParcours" onKeyUp="changeLargeur()" size="3" value="30"/></div>
+		<div><span class="txtOption" id="txtLargeur"> Largeur : </span><input type="text" id="longueurParcours" onKeyUp="changeLongueur()" size="3" value="20"/></div>
+		<div><span class="txtOption" id="txtEchelle"> Echelle du cadrillage : </span><input type="text" id="echelle" onKeyUp="changeEchelle()" size="2"/></div>
+		<span class="txtOption"  id="txtUnite" >Unité de mesure : </span>
+		<select class="txtOption" id="uniteMesure" onChange="changeUniteMesure();">
+		<option id="txtMetre" value="1">Mètres</option>
+		<option id="txtYard" value="1.093613">Yard</option>
+		<option id="txtPied" value="3.28084">Pied</option>
+		</select>
+		<table class="checkboxTable">
+		<tr class="ligneCheckboxTable"><td><INPUT type="checkbox" id="AfficherDistance" name="dist" value="0" onclick="genererParcours()" class="txtOption" checked></td><td><span id="txtDistance">Distance totale</span></td></tr>
+		</table>
+		</div>
+		<br/>
+		<br/>
+		<br/>
+		<div id="blocInfoDim2" class="blocOutil">
+		<div class="titreBloc" id="outilsCouleurs">Couleurs</div>	
+		<div><span class="txtOption">Background : </span></div>
+		<div class="colorSample" id="color-white" onClick="setBackgroundColor(1)"></div>
+		<div class="colorSample" id="color-blue" onClick="setBackgroundColor(2)"></div>
+		<div class="colorSample" id="color-green" onClick="setBackgroundColor(3)"></div>
+		<div><span class="txtOption">Obstacles : </span></div>
+		<div class="colorSample" id="color-white" onClick="setObstacleColor(1)">
+			<div class="miniColorSample" id="color-greyObst"></div>
+		</div>
+		<div class="colorSample" id="color-redObst" onClick="setObstacleColor(2)">
+			<div class="miniColorSample" id="color-blueObst"></div>
+		</div>
+		<div class="colorSample" id="color-redObst" onClick="setObstacleColor(3)">
+			<div class="miniColorSample" id="color-black"></div>
+		</div>
+		<div class="colorSample" id="color-redObst" onClick="setObstacleColor(4)">
+			<div class="miniColorSample" id="color-white"></div>
+		</div>
+		<div class="colorSample" id="color-pink" onClick="setObstacleColor(5)">
+			<div class="miniColorSample" id="color-black"></div>
+		</div>		
+	</div>	
+  </div>
+   <div id="barreOTraj" class="barreOutil">
+   <div class="blocOutil">
+		<div class="titreBloc" id="outilsNumero">Numéros</div>
+		<input type="button" class="boutonOutil num" value=" " onclick="ajouterNumero(1)"/>
+		<input type="button" class="boutonOutil num2" value=" " onclick="ajouterNumero(2)"/>
+		<input type="button" class="boutonOutil num3" value=" " onclick="ajouterNumero(3)"/>	
+	</div>	
+   
+	<div class="blocOutil">
+		<div class="titreBloc" id="outilsOutils2">Outils</div>
+		<input type="button" class="boutonOutil zoomP" value=" " onclick="zoom('p')"/>
+		<input type="button" class="boutonOutil zoomM" value=" " onMouseDown="zoom('m')"/>	
+		<input type="button" class="boutonOutil poubelle" value=" " onMouseDown="supprimerObstacle()"/>		
+	</div>	
+	<div class="blocOutil blocOutil1">
+		<div class="titreBloc" id="outilsTraj">Trajectoires</div>	
+		<table class="checkboxTable">
+		<tr class="ligneCheckboxTable"><td><INPUT type="checkbox" name="Traj" value="AfficherTrajectoires" onclick="ajouterSupprimerTrajectoires()" checked ></td><td><span id="txtTraj">Afficher Trajectoires</span></td></tr>
+		<tr class="ligneCheckboxTable"><td><INPUT type="checkbox" id="ModifierTrajectoires" name="ModifierTrajectoires" value="ModifierTrajectoires" onclick="genererParcours()"   ></td><td><span id="txtManualTraj">Modifier Manuellement</span></td></tr>
+		<tr class="ligneCheckboxTable"><td><INPUT type="checkbox" id="VitesseTrajectoires" name="VitesseTrajectoires" value="VitesseTrajectoires" onclick="genererParcours()"  ></td><td><span id="txtVitesseTraj">SPEED</span></td></tr>
+		<tr class="ligneCheckboxTable"><td><INPUT type="checkbox" id="2on2off" name="2on2off" value="2on2off" onclick="genererParcours()"></td><td><span id="txt2on2offTraj">2on2off</span></td></tr>
+		</table>
+
+		
+		 
+		 
+		
+		 	
+	</div>	
+	
+  </div>
+   <div id="barreOSav" class="barreOutil">
+	<div class="blocOutil blocOutil1">
+		<div class="titreBloc" id="outilsSauvegarde">Sauvegarde</div>	
+		<span class="txtOption" id="generateImg">Générer l'image pour l'export : </span>
+		
+		<input type="button" id="btnGenererWeb" value="Web" onclick="exportToPNG(0)" class="boutonImage">
+		<input type="button" id="btnGenererImpr" value="Imprimante" onclick="exportToPNG(4)" class="boutonImage">
+		<input type="button" id="btnGenererHQ" value="Imprimante Haute Qualité" onclick="exportToPNG(8)" class="boutonImage">				
+	</div>	
+  </div>
+  <div id="outils" class="barreOutil">
+	<div class="blocOutil blocOutil1">
+		<div class="titreBloc" id="outilsSauts">Sauts</div>
+		<input type="button" class="boutonOutil haie" value=" " onMouseDown="ajouterHaie()"/>
+		<input type="button" class="boutonOutil oxer" value=" " onMouseDown="ajouterOxer()"/>
+		<input type="button" class="boutonOutil mur" value=" " onMouseDown="ajouterMur()"/>
+		<input type="button" class="boutonOutil longueur" value=" " onMouseDown="ajouterLongueur()"/>
+	</div>
+	<div class="blocOutil">
+		<div class="titreBloc" id="outilsZones">Zones</div>
+		<input type="button" class="boutonOutil pas" value=" " onMouseDown="ajouterPasserelle()"/>
+		<input type="button" class="boutonOutil bal" value=" " onMouseDown="ajouterBalancoire()"/>
+		<input type="button" class="boutonOutil pal" value=" " onMouseDown="ajouterPalissade()"/>
+		<input type="button" class="boutonOutil table" value=" " onMouseDown="ajouterTable()"/>
+	</div>
+	<div class="blocOutil">
+		<div class="titreBloc" id="outilsAutres">Autres</div>
+		<input type="button" class="boutonOutil tunnel" value=" " onMouseDown="ajouterTunnel(6)"/>
+		<input type="button" class="boutonOutil tunnel3" value=" " onMouseDown="ajouterTunnel(3)"/>
+		<input type="button" class="boutonOutil cho" value=" " onMouseDown="ajouterChaussette()"/>
+		<input type="button" class="boutonOutil slalom" value=" " onMouseDown="ajouterSlalom()"/>
+		<input type="button" class="boutonOutil slalom6" value=" " onMouseDown="ajouterSlalom6()"/>
+		<input type="button" class="boutonOutil pne" value=" " onMouseDown="ajouterPneu()"/>
+	</div>
+	<div class="blocOutil">
+		<div class="titreBloc" id="outilsOutilsNum">Outils</div>
+		<input type="button" class="boutonOutil zoomP" value=" " onclick="zoom('p')"/>
+		<input type="button" class="boutonOutil zoomM" value=" " onMouseDown="zoom('m')"/>	
+		<input type="button" class="boutonOutil poubelle" value=" " onMouseDown="supprimerObstacle()"/>		
+		<input type="button" class="boutonOutil num" value=" " onclick="ajouterNumero(1)"/>
+	</div>	
+	
+  </div>
+
+  
+  <div id="contentCanvas">
+	<canvas id="canvas" width="650" height="441">
+      Canvas not supported
+    </canvas>
+	</br></br>
+	<div id="texte"></div>
+	<span class="txtOption"  id="txtMessage">VERSION BETA (En cours de développement), outil créé pour être utilisé avec une souris</span></br></br>
+	
+	<span class="txtOption"  id="txtMessageObst"></span>
+	
+	
+	
+	
+	<div class="txtFb"  >
+		<div class="fb-like" data-href="https://www.facebook.com/agilitymaps/" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+	</div>
+    
+
+	
+	</div>
+
+</div>
+<!--div class="fondNoExport" id="fondImage"-->
+
+
+<!--/div-->  
+<script language="javascript">
+init();
+</script>
+</body></html>

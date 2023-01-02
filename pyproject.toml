@@ -1,0 +1,50 @@
+[tool.poetry]
+name = "agilitymaps2"
+version = "0.1"
+description = "Agility Maps v2."
+authors = ["Virinas-code <alexcode228@gmail.com>"]
+maintainers = []
+license = "GPL-3.0"
+readme = "README.md"
+
+# Links
+homepage = "https://github.com/AgilityTeamsManager/AgilityMaps2"
+repository = "https://github.com/AgilityTeamsManager/AgilityMaps2"
+documentation = "https://github.com/AgilityTeamsManager/AgilityMaps2/wiki"
+
+# Tags
+keywords = ["agility"]
+classifiers = [
+    "Development Status :: 1 - Planning",
+    "Environment :: Web Environment",
+    "Framework :: Flask",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Natural Language :: English",
+    "Natural Language :: French",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: JavaScript",
+    "Topic :: Utilities",
+    "Typing :: Typed"
+]
+
+# Setup
+packages = [
+    { include = "src" }
+]
+include = ["README.md", "LICENSE"]
+
+
+[tool.poetry.dependencies]
+python = "^3.11"
+Flask = "^2.2.2"
+
+
+[tool.poetry.scripts]
+start-debug = "src.__main__:start"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

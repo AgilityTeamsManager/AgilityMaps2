@@ -1,0 +1,36 @@
+body {
+    background: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+div {
+    display: none;
+}
+
+#canvasTxt {
+    display: none;
+}
+#canvasimg {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    display: block;
+}
+.imageExport {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    display: block;
+}
+
+.imageNotExport {
+    display: none;
+}
+.fondExport {
+    color: white;
+    display: block;
+}
+.fondNoExport {
+    display: none;
+}
