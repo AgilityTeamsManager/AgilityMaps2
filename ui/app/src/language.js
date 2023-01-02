@@ -841,7 +841,7 @@ function initLangue() {
 }
 function setLangue(langue) {
     document.getElementById("langueOptions").src =
-        "images/flags/" + langue + ".png";
+        "/static/public/tabs/flags/" + langue + ".png";
     document.getElementById("medaille").src =
         "/static/public/title/flag-icons/" + langue + ".png";
     if (langue == "fr") {

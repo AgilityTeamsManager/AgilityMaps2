@@ -5,7 +5,7 @@ body {
     font-size: 10px;
     font-family: Tahoma;
     color: #dddddd;
-    background-image: url("images/fondu.png");
+    background-image: url("/static/public/fondu.png");
     background-repeat: repeat-x;
 }
 #logo {
@@ -272,108 +272,108 @@ body {
     border: solid #99ddff 1px;
 }
 .haie {
-    background-image: url("images/haie.png");
+    background-image: url("/static/public/icons/obstacles/jump.png");
 }
 .poubelle {
-    background-image: url("images/poubelle.png");
+    background-image: url("/static/public/icons/trash.png");
     background-repeat: no-repeat;
 }
 .num {
-    background-image: url("images/num.png");
+    background-image: url("/static/public/icons/numbers/num1.png");
     background-repeat: no-repeat;
 }
 .num2 {
-    background-image: url("images/num2.png");
+    background-image: url("/static/public/icons/numbers/num2.png");
     background-repeat: no-repeat;
 }
 .num3 {
-    background-image: url("images/num3.png");
+    background-image: url("/static/public/icons/numbers/num3.png");
     background-repeat: no-repeat;
 }
 
 .oxer {
-    background-image: url("images/oxer.png");
+    background-image: url("/static/public/icons/obstacles/double-jump.png");
 }
 
 .mur {
-    background-image: url("images/mur.png");
+    background-image: url("/static/public/icons/obstacles/wall.png");
 }
 
 .longueur {
-    background-image: url("images/longueur.png");
+    background-image: url("/static/public/icons/obstacles/long-jump.png");
 }
 .table {
-    background-image: url("images/table.png");
+    background-image: url("/static/public/icons/obstacles/table.png");
 }
 .tunnel {
-    background-image: url("images/tunnel.png");
+    background-image: url("/static/public/icons/obstacles/tunnel.png");
 }
 .tunnel3 {
-    background-image: url("images/tunnel3.png");
+    background-image: url("/static/public/icons/obstacles/tunnel3.png");
 }
 .cho {
-    background-image: url("images/cho.png");
+    background-image: url("/static/public/icons/obstacles/sock.png");
 }
 .slalom {
-    background-image: url("images/slalom.png");
+    background-image: url("/static/public/icons/obstacles/slalom.png");
 }
 .slalom6 {
-    background-image: url("images/slalom6.png");
+    background-image: url("/static/public/icons/obstacles/slalom6.png");
 }
 .pne {
-    background-image: url("images/pneu.png");
+    background-image: url("/static/public/icons/obstacles/tire.png");
 }
 .pal {
-    background-image: url("images/A.png");
+    background-image: url("/static/public/icons/obstacles/A.png");
 }
 .bal {
-    background-image: url("images/bal.png");
+    background-image: url("/static/public/icons/obstacles/balance.png");
 }
 .pas {
-    background-image: url("images/pass.png");
+    background-image: url("/static/public/icons/obstacles/run.png");
 }
 
 .zoomP {
-    background-image: url("images/zoomP.png");
+    background-image: url("/static/public/icons/zoom/plus.png");
     background-repeat: no-repeat;
     background-position: center;
 }
 .zoomM {
-    background-image: url("images/zoomM.png");
+    background-image: url("/static/public/icons/zoom/minus.png");
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .dMilieu {
-    background-image: url("images/dMilieu.png");
+    background-image: url("/static/public/icons/driver/mr.png");
     background-repeat: no-repeat;
 }
 .gMilieu {
-    background-image: url("images/gMilieu.png");
+    background-image: url("/static/public/icons/driver/ml.png");
     background-repeat: no-repeat;
 }
 .dLong {
-    background-image: url("images/dLong.png");
+    background-image: url("/static/public/icons/driver/lr.png");
     background-repeat: no-repeat;
 }
 .gLong {
-    background-image: url("images/gLong.png");
+    background-image: url("/static/public/icons/driver/ll.png");
     background-repeat: no-repeat;
 }
 .dAvant {
-    background-image: url("images/dAvant.png");
+    background-image: url("/static/public/icons/driver/fr.png");
     background-repeat: no-repeat;
 }
 .gAvant {
-    background-image: url("images/gAvant.png");
+    background-image: url("/static/public/icons/driver/fl.png");
     background-repeat: no-repeat;
 }
 .neutre {
-    background-image: url("images/neutre.png");
+    background-image: url("/static/public/icons/driver/neutral.png");
     background-repeat: no-repeat;
 }
 .chien {
-    background-image: url("images/chien.png");
+    background-image: url("/static/public/icons/driver/dog.png");
     background-repeat: no-repeat;
 }
 

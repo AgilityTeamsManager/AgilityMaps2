@@ -36,145 +36,173 @@
     </script>
     <div id="fb-root"></div>
 
-    <img src="static/public/title/logo150.png" id="logo" width="90px" height="90px"></img>
-    <img src="static/public/title/flag-icons/fr.png" id="medaille" width="12px" height="12px"></img>
+    <img src="/static/public/title/logo150.png" id="logo" width="90px" height="90px"></img>
+    <img src="/static/public/title/flag-icons/fr.png" id="medaille" width="12px" height="12px"></img>
     <div id="titre" class="barreTitre">
     </div>
  
-    <img src="static/public/title/title.png" id="titreLogo"></img>
+    <img src="/static/public/title/title.png" id="titreLogo"></img>
 	   <div id="options" class="barreOptions">
 	    <div id="blocOObst" class="blocOptions" onClick="setInfoObstacles()" > 
-		    <img id="imgObs" src="images/obstacles.png" width="50px" height="35px" />
+		    <img id="imgObs" src="/static/public/tabs/focused/obstacles.png" width="50px" height="35px" />
 			   <div id="contentBlocOObst">Obstacles</div>				
 	    </div>
 	    <div id="blocOParam" class="blocOptions" onClick="setInfoParam()" >	 
-		    <img id="imgParam" src="images/paramBW.png" width="45px" height="35px" />
+		    <img id="imgParam" src="/static/public/tabs/unfocused/param.png" width="45px" height="35px" />
 			   <div id="contentBlocOParam">Paramètres</div>		
 	    </div>	 
 	    <div id="blocOTrj" class="blocOptions" onClick="setInfoTrajectoires()">
-		    <img id="imgTrj" src="images/trjBW.png" width="50px" height="35px" />
+		    <img id="imgTrj" src="/static/public/tabs/unfocused/trj.png" width="50px" height="35px" />
 			   <div id="contentBlocOTrj">Trajectoires</div>					
 	    </div>
-	  <div id="blocOCon" class="blocOptions" onClick="setInfoConducteur()">
-		<img id="imgCon" src="images/conducteurBW.png" width="45px" height="35px" />
-			<div id="contentBlocOCon">Driver</div>					
-	  </div>
-	  <div id="blocOSav" class="blocOptions" onClick="setInfoSauvegarde()">
-		<img id="imgSav" src="images/savBW.png" width="35px" height="35px" />
-			<div id="contentBlocOSav">Téléchargement</div>				
-	  </div>
-	  <div id="blocOLangue" class="blocOptions" onClick="setInfoLangue()">
-		<img id="langueOptions" src="images/flags/fr.png"  height="35px"/>
-			<div id="contentBlocOLangue">Langue</div>				
-	  </div>
-  </div>
+	    <div id="blocOCon" class="blocOptions" onClick="setInfoConducteur()">
+		    <img id="imgCon" src="/static/public/tabs/unfocused/conducteur.png" width="45px" height="35px" />
+			   <div id="contentBlocOCon">Driver</div>					
+	    </div>
+	    <div id="blocOSav" class="blocOptions" onClick="setInfoSauvegarde()">
+		    <img id="imgSav" src="/static/public/tabs/unfocused/sav.png" width="35px" height="35px" />
+			   <div id="contentBlocOSav">Téléchargement</div>				
+	    </div>
+	     <div id="blocOLangue" class="blocOptions" onClick="setInfoLangue()">
+		    <img id="langueOptions" src="/static/public/tabs/flags/fr.png"  height="35px"/>
+			   <div id="contentBlocOLangue">Langue</div>				
+	    </div>
+    </div>
   
  
-  <div id="barreOConduct" class="barreOutil">
-	<div class="blocOutil blocOutil1">
-		<div class="titreBloc" id="outilsConducteur">Driver</div>	
-		<input type="button" class="boutonOutil gAvant" value=" " onclick="ajouterConducteur('gL')"/>
-		<input type="button" class="boutonOutil dAvant" value=" " onclick="ajouterConducteur('dL')"/>	
-		<input type="button" class="boutonOutil gMilieu" value=" " onclick="ajouterConducteur('g')"/>	
-		<input type="button" class="boutonOutil dMilieu" value=" " onclick="ajouterConducteur('d')"/>
-		<input type="button" class="boutonOutil gLong" value=" " onclick="ajouterConducteur('gC')"/>	
-		<input type="button" class="boutonOutil dLong" value=" " onclick="ajouterConducteur('dC')"/>		
-		<input type="button" class="boutonOutil neutre" value=" " onclick="ajouterConducteur('')"/>		
-		<input type="button" class="boutonOutil chien" value=" " onclick="ajouterChien()"/>	
-		</div>
-	<div class="blocOutil">
-		<div class="titreBloc" id="outilsOutils">Outils</div>
-		<input type="button" class="boutonOutil zoomP" value=" " onclick="zoom('p')"/>
-		<input type="button" class="boutonOutil zoomM" value=" " onMouseDown="zoom('m')"/>	
-		<input type="button" class="boutonOutil poubelle" value=" " onMouseDown="supprimerObstacle()"/>		
-	</div>	
-	<div class="titreBloc" id="outilsCouleurs">Couleurs</div>	
-		<div class="colorSample" id="color-grey-con" onClick="setDriverColor(1)"></div>
-		<div class="colorSample" id="color-red-con" onClick="setDriverColor(2)"></div>
-		<div class="colorSample" id="color-blue-con" onClick="setDriverColor(3)"></div>		
-		<table class="checkboxTable">
-		<tr><td><INPUT type="checkbox" id="AfficherConducteur" name="cond" value="0" onclick="genererParcours()" checked></td><td><span class="txtOption" id="txtShowDrive">Show the driver</span></td></tr>		
-		</table>
-		 		
-	</div>
-  </div>
-    <div id="barreOLangue" class="barreOutil">
-	<div class="blocOutil blocOutil1">
-	<div class="titreBloc" id="outilsLangue">Langue</div>	
-	<FORM>
-	<div id="blocInfoLangueFr" class="blocInfo" onClick="setLangue('fr');">
-		<img src="images/fr.png" /> Fr
-	</div>
-  	<div id="blocInfoLangueEn" class="blocInfo" onClick="setLangue('gb');">
-		<img src="images/gb.png" /> En
-	</div>
-  	<div id="blocInfoLanguePt" class="blocInfo" onClick="setLangue('pt');">
-		<img src="images/pt.png" /> Pt
-	</div>
-  	<div id="blocInfoLangueEs" class="blocInfo" onClick="setLangue('es');">
-		<img src="images/es.png" /> Es
-	</div>
-  	<div id="blocInfoLangueDe" class="blocInfo" onClick="setLangue('de');">
-		 <img src="images/de.png" /> De
-	</div>
-  	<div id="blocInfoLangueIt" class="blocInfo" onClick="setLangue('it');">
-		 <img src="images/it.png" /> It
-	</div>
-  	<div id="blocInfoLanguePl" class="blocInfo" onClick="setLangue('pl');">
-		 <img src="images/pl.png" /> Pl
-	</div>
-  	<div id="blocInfoLangueJp" class="blocInfo" onClick="setLangue('jp');">
-		 <img src="images/jp.png" /> 日本語
-	</div>
-  	<div id="blocInfoLangueSe" class="blocInfo" onClick="setLangue('se');">
-		 <img src="images/se.png" /> Se
-	</div>
-  	<div id="blocInfoLangueNo" class="blocInfo" onClick="setLangue('no');">
-		 <img src="images/no.png" /> No
-	</div>
-  	<div id="blocInfoLangueFi" class="blocInfo" onClick="setLangue('fi');">
-		 <img src="images/fi.png" /> Fi
-	</div>
-  	<div id="blocInfoLangueDa" class="blocInfo" onClick="setLangue('da');">
-		 <img src="images/da.png" /> Da
-	</div>
-  	<div id="blocInfoLangueHu" class="blocInfo" onClick="setLangue('hu');">
-		 <img src="images/hu.png" /> Hu
-	</div>
-  	<div id="blocInfoLangueRu" class="blocInfo" onClick="setLangue('ru');">
-		 <img src="images/ru.png" /> Ru
-	</div>
-  	<div id="blocInfoLangueCt" class="blocInfo" onClick="setLangue('ct');">
-		 <img src="images/ct.png" /> Ca
-	</div>		
-	</FORM>
-	</div>	
-  </div>
-  <div id="barreOParam" class="barreOutil">
-	<div class="blocOutil blocOutil1">
-		<div class="titreBloc" id="outilsParam">Paramètres</div>	
-		<div><span id="txtTitre"> Titre : </span><input type="text" id="titreParcours" onKeyUp="changeInfos()"/></div>
-		<div><span id="txtAuteur"> Auteur : </span><input  type="text" id="auteurParcours" onKeyUp="changeInfos()"/></div>
-		<div class="titreBloc" id="outilsDimension">Dimensions</div>	
-		<div><span class="txtOption" id="txtLongueur"> Longueur : </span><input type="text" id="largeurParcours" onKeyUp="changeLargeur()" size="3" value="30"/></div>
-		<div><span class="txtOption" id="txtLargeur"> Largeur : </span><input type="text" id="longueurParcours" onKeyUp="changeLongueur()" size="3" value="20"/></div>
-		<div><span class="txtOption" id="txtEchelle"> Echelle du cadrillage : </span><input type="text" id="echelle" onKeyUp="changeEchelle()" size="2"/></div>
-		<span class="txtOption"  id="txtUnite" >Unité de mesure : </span>
-		<select class="txtOption" id="uniteMesure" onChange="changeUniteMesure();">
-		<option id="txtMetre" value="1">Mètres</option>
-		<option id="txtYard" value="1.093613">Yard</option>
-		<option id="txtPied" value="3.28084">Pied</option>
-		</select>
-		<table class="checkboxTable">
-		<tr class="ligneCheckboxTable"><td><INPUT type="checkbox" id="AfficherDistance" name="dist" value="0" onclick="genererParcours()" class="txtOption" checked></td><td><span id="txtDistance">Distance totale</span></td></tr>
-		</table>
-		</div>
-		<br/>
-		<br/>
-		<br/>
-		<div id="blocInfoDim2" class="blocOutil">
-		<div class="titreBloc" id="outilsCouleurs">Couleurs</div>	
-		<div><span class="txtOption">Background : </span></div>
+    <div id="barreOConduct" class="barreOutil">
+	    <div class="blocOutil blocOutil1">
+      <div class="titreBloc" id="outilsConducteur">Driver</div>	
+      <input type="button" class="boutonOutil gAvant" value=" " onclick="ajouterConducteur('gL')"/>
+      <input type="button" class="boutonOutil dAvant" value=" " onclick="ajouterConducteur('dL')"/>	
+      <input type="button" class="boutonOutil gMilieu" value=" " onclick="ajouterConducteur('g')"/>	
+      <input type="button" class="boutonOutil dMilieu" value=" " onclick="ajouterConducteur('d')"/>
+      <input type="button" class="boutonOutil gLong" value=" " onclick="ajouterConducteur('gC')"/>	
+      <input type="button" class="boutonOutil dLong" value=" " onclick="ajouterConducteur('dC')"/>		
+      <input type="button" class="boutonOutil neutre" value=" " onclick="ajouterConducteur('')"/>		
+      <input type="button" class="boutonOutil chien" value=" " onclick="ajouterChien()"/>	
+     </div>
+     <div class="blocOutil">
+      <div class="titreBloc" id="outilsOutils">Outils</div>
+      <input type="button" class="boutonOutil zoomP" value=" " onclick="zoom('p')"/>
+      <input type="button" class="boutonOutil zoomM" value=" " onMouseDown="zoom('m')"/>	
+      <input type="button" class="boutonOutil poubelle" value=" " onMouseDown="supprimerObstacle()"/>		
+     </div>	
+     <div class="titreBloc" id="outilsCouleurs">Couleurs</div>	
+      <div class="colorSample" id="color-grey-con" onClick="setDriverColor(1)"></div>
+      <div class="colorSample" id="color-red-con" onClick="setDriverColor(2)"></div>
+      <div class="colorSample" id="color-blue-con" onClick="setDriverColor(3)"></div>		
+      <table class="checkboxTable">
+       <tr>
+        <td>
+         <INPUT type="checkbox" id="AfficherConducteur" name="cond" value="0" onclick="genererParcours()" checked>
+        </td>
+        <td>
+         <span class="txtOption" id="txtShowDrive">Show the driver</span>
+        </td>
+       </tr>		
+      </table>
+    </div>
+   </div>
+   <div id="barreOLangue" class="barreOutil">
+	   <div class="blocOutil blocOutil1">
+	    <div class="titreBloc" id="outilsLangue">Langue</div>	
+	    <FORM>
+	     <div id="blocInfoLangueFr" class="blocInfo" onClick="setLangue('fr');">
+		     <img src="/static/public/flags/fr.png" /> Fr
+	     </div>
+  	   <div id="blocInfoLangueEn" class="blocInfo" onClick="setLangue('gb');">
+		     <img src="/static/public/flags/gb.png" /> En
+	     </div>
+     	<div id="blocInfoLanguePt" class="blocInfo" onClick="setLangue('pt');">
+	     	<img src="/static/public/flags/pt.png" /> Pt
+     	</div>
+     	<div id="blocInfoLangueEs" class="blocInfo" onClick="setLangue('es');">
+	     	<img src="/static/public/flags/es.png" /> Es
+	     </div>
+      <div id="blocInfoLangueDe" class="blocInfo" onClick="setLangue('de');">
+       <img src="/static/public/flags/de.png" /> De
+     	</div>
+      <div id="blocInfoLangueIt" class="blocInfo" onClick="setLangue('it');">
+       <img src="/static/public/flags/it.png" /> It
+     	</div>
+      <div id="blocInfoLanguePl" class="blocInfo" onClick="setLangue('pl');">
+       <img src="/static/public/flags/pl.png" /> Pl
+	     </div>
+      <div id="blocInfoLangueJp" class="blocInfo" onClick="setLangue('jp');">
+       <img src="/static/public/flags/jp.png" /> 日本語
+     	</div>
+      <div id="blocInfoLangueSe" class="blocInfo" onClick="setLangue('se');">
+       <img src="/static/public/flags/se.png" /> Se
+	     </div>
+      <div id="blocInfoLangueNo" class="blocInfo" onClick="setLangue('no');">
+       <img src="/static/public/flags/no.png" /> No
+     	</div>
+      <div id="blocInfoLangueFi" class="blocInfo" onClick="setLangue('fi');">
+       <img src="/static/public/flags/fi.png" /> Fi
+	     </div>
+      <div id="blocInfoLangueDa" class="blocInfo" onClick="setLangue('da');">
+       <img src="/static/public/flags/da.png" /> Da
+	     </div>
+      <div id="blocInfoLangueHu" class="blocInfo" onClick="setLangue('hu');">
+       <img src="/static/public/flags/hu.png" /> Hu
+	     </div>
+      <div id="blocInfoLangueRu" class="blocInfo" onClick="setLangue('ru');">
+       <img src="/static/public/flags/ru.png" /> Ru
+	     </div>
+      <div id="blocInfoLangueCt" class="blocInfo" onClick="setLangue('ct');">
+       <img src="/static/public/flags/ct.png" /> Ca
+	     </div>		
+     </FORM>
+    </div>	
+   </div>
+   <div id="barreOParam" class="barreOutil">
+	   <div class="blocOutil blocOutil1">
+	   	<div class="titreBloc" id="outilsParam">Paramètres</div>	
+	   	<div>
+      <span id="txtTitre"> Titre : </span>
+      <input type="text" id="titreParcours" onKeyUp="changeInfos()"/>
+     </div>
+		   <div>
+      <span id="txtAuteur"> Auteur : </span>
+      <input  type="text" id="auteurParcours" onKeyUp="changeInfos()"/>
+     </div>
+		   <div class="titreBloc" id="outilsDimension">Dimensions</div>	
+		   <div>
+      <span class="txtOption" id="txtLongueur"> Longueur : </span>
+      <input type="text" id="largeurParcours" onKeyUp="changeLargeur()" size="3" value="30"/>
+     </div>
+		   <div>
+      <span class="txtOption" id="txtLargeur"> Largeur : </span>
+      <input type="text" id="longueurParcours" onKeyUp="changeLongueur()" size="3" value="20"/>
+     </div>
+	   	<div>
+      <span class="txtOption" id="txtEchelle"> Echelle du cadrillage : </span>
+      <input type="text" id="echelle" onKeyUp="changeEchelle()" size="2"/>
+     </div>
+		   <span class="txtOption"  id="txtUnite" >Unité de mesure : </span>
+		   <select class="txtOption" id="uniteMesure" onChange="changeUniteMesure();">
+	    	<option id="txtMetre" value="1">Mètres</option>
+		    <option id="txtYard" value="1.093613">Yard</option>
+	    	<option id="txtPied" value="3.28084">Pied</option>
+	   	</select>
+	   	<table class="checkboxTable">
+	    	<tr class="ligneCheckboxTable">
+       <td>
+        <INPUT type="checkbox" id="AfficherDistance" name="dist" value="0" onclick="genererParcours()" class="txtOption" checked>
+       </td>
+       <td>
+        <span id="txtDistance">Distance totale</span>
+       </td>
+      </tr>
+		   </table>
+	  	</div>
+	  	<br/>
+	  	<br/>
+	  	<br/>
+  		<div id="blocInfoDim2" class="blocOutil">
+   		<div class="titreBloc" id="outilsCouleurs">Couleurs</div>	
+	   	<div><span class="txtOption">Background : </span></div>
 		<div class="colorSample" id="color-white" onClick="setBackgroundColor(1)"></div>
 		<div class="colorSample" id="color-blue" onClick="setBackgroundColor(2)"></div>
 		<div class="colorSample" id="color-green" onClick="setBackgroundColor(3)"></div>
